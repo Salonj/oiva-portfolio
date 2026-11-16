@@ -1,11 +1,12 @@
 ---
 import { type CollectionEntry, getCollection, render } from 'astro:content';
 
-import ContactCTA from '../../components/ContactCTA.astro';
-import Hero from '../../components/Hero.astro';
-import Icon from '../../components/Icon.astro';
-import Pill from '../../components/Pill.astro';
-import BaseLayout from '../../layouts/BaseLayout.astro';
+import ContactCTA from '../../../components/ContactCTA.astro';
+import Hero from '../../../components/Hero.astro';
+import Icon from '../../../components/Icon.astro';
+import Pill from '../../../components/Pill.astro';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { getLangFromUrl, useTranslations, useTranslatedPath } from '../../../i18n/utils';
 
 interface Props {
 	entry: CollectionEntry<'work'>;
@@ -23,6 +24,9 @@ export async function getStaticPaths() {
 }
 
 const { entry } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const translatePath = useTranslatedPath(lang);
 const { Content } = await render(entry);
 ---
 
@@ -31,14 +35,14 @@ const { Content } = await render(entry);
 		<div class="stack gap-15">
 			<header>
 				<div class="wrapper stack gap-2">
-					<a class="back-link" href="/work/">
-						<Icon icon="arrow-left" /> Work
+					<a class="back-link" href={translatePath('/work/')}>
+						<Icon icon="arrow-left" /> {t('nav.back')}
 					</a>
 					<Hero title={entry.data.title} align="start">
 						<div class="details">
 							<div class="tags">
-								{entry.data.tags.map((t) => (
-									<Pill>{t}</Pill>
+								{entry.data.tags.map((tag) => (
+									<Pill>{tag}</Pill>
 								))}
 							</div>
 							<p class="description">{entry.data.description}</p>

@@ -7,11 +7,17 @@ import ContactCTA from '../components/ContactCTA.astro';
 import Grid from '../components/Grid.astro';
 import Hero from '../components/Hero.astro';
 import Icon from '../components/Icon.astro';
-import Pill from '../components/Pill.astro';
 import PortfolioPreview from '../components/PortfolioPreview.astro';
 import Skills from '../components/Skills.astro';
 // Layout import — provides basic page elements: <head>, <nav>, <footer> etc.
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { getLangFromUrl, useTranslations, useTranslatedPath } from '../i18n/utils';
+
+
+/** Get the translation function for the current language. */
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const translatePath = useTranslatedPath(lang);
 
 // Content Fetching: List four most recent work projects
 const projects = (await getCollection('work'))
@@ -28,25 +34,14 @@ const projects = (await getCollection('work'))
 			<header class="hero">
 				<Hero
 					subheading="Oiva Salomaa"
-					title="Journalistin opiskelija & viestijä"
-					tagline="Olen toimittaja ja viestijä, joka tekee huolellisesti taustoitettua journalismia ihmisistä, kulttuurista ja yhteiskunnasta."
+					title={t('index.title')}
+					tagline={t('index.tagline')}
 					align="start"
 				>
-					<div class="roles">
-						<Pill>
-							<Icon icon="code" size="1.33em" /> Developer
-						</Pill>
-						<Pill>
-							<Icon icon="microphone-stage" size="1.33em" /> Speaker
-						</Pill>
-						<Pill>
-							<Icon icon="pencil-line" size="1.33em" /> Writer
-						</Pill>
-					</div>
 				</Hero>
 
 				<img
-					alt="Jeanine White smiling in a red plaid shirt and tortoise shell glasses"
+					alt="Oiva Salomaa"
 					width="480"
 					height="620"
 					src="/assets/portrait.jpg"
@@ -59,8 +54,8 @@ const projects = (await getCollection('work'))
 		<main class="wrapper stack gap-20 lg:gap-48">
 			<section class="section with-cta">
 				<header class="section-header stack gap-2 lg:gap-4">
-					<h3>Selected Work</h3>
-					<p>Take a look below at some of my featured work for clients from the past few years.</p>
+					<h3>{t('articles.title')}</h3>
+					<p>{t('articles.tagline')}</p>
 				</header>
 
 				<div class="gallery">
@@ -74,13 +69,14 @@ const projects = (await getCollection('work'))
 				</div>
 
 				<div class="cta">
-					<CallToAction href="/work/">
-						View All
+					<CallToAction href={translatePath('/work/')}>
+						{t('articles.cta')}
 						<Icon icon="arrow-right" size="1.2em" />
 					</CallToAction>
 				</div>
 			</section>
 
+			<!--
 			<section class="section">
 				<header class="section-header stack gap-2 lg:gap-4">
 					<h3>Mentions</h3>
@@ -100,6 +96,7 @@ const projects = (await getCollection('work'))
 					</Grid>
 				</div>
 			</section>
+			-->
 		</main>
 
 		<ContactCTA />
