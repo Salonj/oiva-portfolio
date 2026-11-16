@@ -1,29 +1,39 @@
 /* Global variables */
 :root {
-  /* Colors */
-  --gray-0: #090b11;
-  --gray-50: #141925;
-  --gray-100: #283044;
-  --gray-200: #3d4663;
-  --gray-300: #505d84;
-  --gray-400: #6474a2;
-  --gray-500: #8490b5;
-  --gray-600: #a3acc8;
-  --gray-700: #c3cadb;
-  --gray-800: #e3e6ee;
-  --gray-900: #f3f4f7;
-  --gray-999-basis: 0, 0%, 100%;
+  /* Brand palette */
+  --oj-nw: #f6eee3;
+  --oj-w: #ffffff;
+  --oj-cb: #212121;
+  --oj-b: #000000;
+  --oj-g: #006110;
+  /* Page background: charcoal deepened toward black */
+  --oj-bg: color-mix(in srgb, var(--oj-cb) 35%, var(--oj-b));
+
+  /* Neutrals: mixes of natural white (text) and charcoal (background) */
+  --gray-0: var(--oj-nw);
+  --gray-50: color-mix(in srgb, var(--oj-nw) 95%, var(--oj-bg));
+  --gray-100: color-mix(in srgb, var(--oj-nw) 90%, var(--oj-bg));
+  --gray-200: color-mix(in srgb, var(--oj-nw) 82%, var(--oj-bg));
+  --gray-300: color-mix(in srgb, var(--oj-nw) 72%, var(--oj-bg));
+  --gray-400: color-mix(in srgb, var(--oj-nw) 60%, var(--oj-bg));
+  --gray-500: color-mix(in srgb, var(--oj-nw) 48%, var(--oj-bg));
+  --gray-600: color-mix(in srgb, var(--oj-nw) 36%, var(--oj-bg));
+  --gray-700: color-mix(in srgb, var(--oj-nw) 24%, var(--oj-bg));
+  --gray-800: color-mix(in srgb, var(--oj-nw) 12%, var(--oj-bg));
+  --gray-900: color-mix(in srgb, var(--oj-nw) 6%, var(--oj-bg));
+  --gray-999-basis: 0, 0%, 4%;
   --gray-999_40: hsla(var(--gray-999-basis), 0.4);
-  --gray-999: #ffffff;
+  --gray-999: var(--oj-bg);
 
-  --accent-light: #c561f6;
-  --accent-regular: #7611a6;
-  --accent-dark: #1c0056;
-  --accent-overlay: hsla(280, 89%, 67%, 0.33);
-  --accent-subtle-overlay: var(--accent-overlay);
-  --accent-text-over: var(--gray-999);
+  /* Accent: restrained brand green; "dark" is a muted sage tint for links/icons on charcoal */
+  --accent-light: color-mix(in srgb, var(--oj-g) 70%, var(--oj-b));
+  --accent-regular: color-mix(in srgb, var(--oj-g) 88%, #7fb08a);
+  --accent-dark: color-mix(in srgb, var(--oj-g) 25%, #a9c9b0);
+  --accent-overlay: color-mix(in srgb, var(--oj-g) 55%, transparent);
+  --accent-subtle-overlay: color-mix(in srgb, var(--oj-g) 35%, transparent);
+  --accent-text-over: var(--oj-w);
 
-  --link-color: var(--accent-regular);
+  --link-color: color-mix(in srgb, var(--oj-g) 55%, #4fd36e);
 
   /* Gradients */
   --gradient-stop-1: var(--accent-light);
@@ -42,9 +52,9 @@
   );
   --gradient-accent-orange: linear-gradient(
     150deg,
-    #ca7879,
-    var(--accent-regular),
-    var(--accent-dark)
+    #6fd68a,
+    #0f8a2a,
+    #00380d
   );
   --gradient-stroke: linear-gradient(180deg, var(--gray-900), var(--gray-700));
 
@@ -80,59 +90,6 @@
 
   /* Transitions */
   --theme-transition: 0.2s ease-in-out;
-}
-
-:root.theme-dark {
-  --gray-0: #ffffff;
-  --gray-50: #f3f4f7;
-  --gray-100: #e3e6ee;
-  --gray-200: #c3cadb;
-  --gray-300: #a3acc8;
-  --gray-400: #8490b5;
-  --gray-500: #6474a2;
-  --gray-600: #505d84;
-  --gray-700: #3d4663;
-  --gray-800: #283044;
-  --gray-900: #141925;
-  --gray-999-basis: 225, 31%, 5%;
-  --gray-999: #090b11;
-
-  --accent-light: #1c0056;
-  --accent-regular: #7611a6;
-  --accent-dark: #c561f6;
-  --accent-overlay: hsla(280, 89%, 67%, 0.33);
-  --accent-subtle-overlay: hsla(281, 81%, 36%, 0.33);
-  --accent-text-over: var(--gray-0);
-
-  --link-color: var(--accent-dark);
-
-  --gradient-stop-1: #4c11c6;
-  --gradient-subtle: linear-gradient(
-    150deg,
-    var(--gray-900) 19%,
-    var(--gray-999) 81%
-  );
-  --gradient-accent-orange: linear-gradient(
-    150deg,
-    #ca7879,
-    var(--accent-regular),
-    var(--accent-light)
-  );
-  --gradient-stroke: linear-gradient(180deg, var(--gray-600), var(--gray-800));
-
-  --shadow-sm:
-    0px 6px 3px rgba(255, 255, 255, 0.01),
-    0px 4px 2px rgba(255, 255, 255, 0.01),
-    0px 2px 2px rgba(255, 255, 255, 0.02), 0px 0px 1px rgba(255, 255, 255, 0.03);
-  --shadow-md:
-    0px 28px 11px rgba(255, 255, 255, 0.01),
-    0px 16px 10px rgba(255, 255, 255, 0.03),
-    0px 7px 7px rgba(255, 255, 255, 0.05), 0px 2px 4px rgba(255, 255, 255, 0.06);
-  --shadow-lg:
-    0px 62px 25px rgba(255, 255, 255, 0.01),
-    0px 35px 21px rgba(255, 255, 255, 0.05),
-    0px 16px 16px rgba(255, 255, 255, 0.1),
-    0px 4px 9px rgba(255, 255, 255, 0.12);
 }
 
 html,
