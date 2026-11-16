@@ -6,7 +6,7 @@ import Hero from '../../../components/Hero.astro';
 import Icon from '../../../components/Icon.astro';
 import Pill from '../../../components/Pill.astro';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
-import { getLangFromUrl, useTranslations, useTranslatedPath } from '../../../i18n/utils';
+import { withBase, getLangFromUrl, useTranslations, useTranslatedPath } from '../../../i18n/utils';
 
 interface Props {
 	entry: CollectionEntry<'work'>;
@@ -52,7 +52,7 @@ const { Content } = await render(entry);
 			</header>
 			<main class="wrapper">
 				<div class="stack gap-10 content">
-					{entry.data.img && <img src={entry.data.img} alt={entry.data.img_alt || ''} />}
+					{entry.data.img && <img src={withBase(entry.data.img)} alt={entry.data.img_alt || ''} />}
 					<div class="content">
 						<Content />
 					</div>

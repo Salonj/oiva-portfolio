@@ -11,7 +11,7 @@ import PortfolioPreview from '../components/PortfolioPreview.astro';
 import Skills from '../components/Skills.astro';
 // Layout import — provides basic page elements: <head>, <nav>, <footer> etc.
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { getLangFromUrl, useTranslations, useTranslatedPath } from '../i18n/utils';
+import { withBase, getLangFromUrl, useTranslations, useTranslatedPath } from '../i18n/utils';
 
 
 /** Get the translation function for the current language. */
@@ -44,7 +44,7 @@ const projects = (await getCollection('work'))
 					alt="Oiva Salomaa"
 					width="480"
 					height="620"
-					src="/assets/portrait.jpg"
+					src={withBase("/assets/portrait.jpg")}
 				/>
 			</header>
 

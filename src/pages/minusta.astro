@@ -2,7 +2,7 @@
 import ContactCTA from '../components/ContactCTA.astro';
 import Hero from '../components/Hero.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import { withBase, getLangFromUrl, useTranslations } from '../i18n/utils';
 
 
 /** Get the translation function for the current language. */
@@ -20,7 +20,7 @@ const t = useTranslations(lang);
 				<img
 					width="1553"
 					height="873"
-					src="/assets/at-work.jpg"
+					src={withBase("/assets/at-work.jpg")}
 					alt="Jeanine White at work with a colleague"
 				/>
 			</Hero>
