@@ -5,7 +5,6 @@
   --oj-w: #ffffff;
   --oj-cb: #212121;
   --oj-b: #000000;
-  --oj-g: #006110;
   /* Page background: charcoal deepened toward black */
   --oj-bg: color-mix(in srgb, var(--oj-cb) 35%, var(--oj-b));
 
@@ -26,14 +25,14 @@
   --gray-999: var(--oj-bg);
 
   /* Accent: restrained brand green; "dark" is a muted sage tint for links/icons on charcoal */
-  --accent-light: color-mix(in srgb, var(--oj-g) 70%, var(--oj-b));
-  --accent-regular: color-mix(in srgb, var(--oj-g) 88%, #7fb08a);
-  --accent-dark: color-mix(in srgb, var(--oj-g) 25%, #a9c9b0);
-  --accent-overlay: color-mix(in srgb, var(--oj-g) 55%, transparent);
-  --accent-subtle-overlay: color-mix(in srgb, var(--oj-g) 35%, transparent);
+  --accent-light: color-mix(in srgb, var(--oj-nw) 18%, var(--oj-bg));
+  --accent-regular: color-mix(in srgb, var(--oj-nw) 30%, var(--oj-bg));
+  --accent-dark: color-mix(in srgb, var(--oj-nw) 72%, var(--oj-bg));
+  --accent-overlay: color-mix(in srgb, var(--oj-nw) 25%, transparent);
+  --accent-subtle-overlay: color-mix(in srgb, var(--oj-nw) 14%, transparent);
   --accent-text-over: var(--oj-w);
 
-  --link-color: color-mix(in srgb, var(--oj-g) 55%, #4fd36e);
+  --link-color: color-mix(in srgb, var(--oj-nw) 78%, var(--oj-bg));
 
   /* Gradients */
   --gradient-stop-1: var(--accent-light);
@@ -52,9 +51,9 @@
   );
   --gradient-accent-orange: linear-gradient(
     150deg,
-    #6fd68a,
-    #0f8a2a,
-    #00380d
+    color-mix(in srgb, var(--oj-nw) 38%, var(--oj-bg)),
+    color-mix(in srgb, var(--oj-nw) 22%, var(--oj-bg)),
+    color-mix(in srgb, var(--oj-nw) 9%, var(--oj-bg))
   );
   --gradient-stroke: linear-gradient(180deg, var(--gray-900), var(--gray-700));
 
@@ -84,8 +83,8 @@
   --font-system:
     system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  --font-body: "Public Sans", var(--font-system);
-  --font-brand: Rubik, var(--font-system);
+  --font-body: "Noticia Text", Georgia, "Times New Roman", serif;
+  --font-brand: Newsreader, Georgia, "Times New Roman", serif;
   --font-accent: "UnifrakturCook", "Copperplate Gothic", var(--font-system);
 
   /* Transitions */
